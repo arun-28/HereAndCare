@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect With Us</title>
+    <link rel="stylesheet" href="form.css">
+    <script>
+        function closeTab() {
+            alert("Form submitted successfully! Thank You for Your Contribution");
+            window.close();
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Connect With Us</h1>
+        <p>Kindly fill this form, our team will collect your <strong>Donation</strong> from your place.</p>
+        <form onsubmit="closeTab(); return false;">
+            <div class="form-group">
+                <input type="text" id="name" name="name" placeholder="Your Name" required>
+                <input type="text" id="address" name="address" placeholder="Address" required>
+            </div>
+            <div class="form-group">
+                <input type="text" id="mobile" name="mobile" placeholder="Mobile No." required>
+            </div>
+            <div class="form-group">
+                <label><input type="checkbox" id="food" name="donation" value="food"> Food</label>
+                <label><input type="checkbox" id="clothes" name="donation" value="clothes"> Clothes</label>
+                <label><input type="checkbox" id="money" name="donation" value="money"> Money</label>
+            </div>
+            <div class="form-group">
+                <textarea id="message" name="message" placeholder="Message" rows="4"></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit">Submit Details</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
