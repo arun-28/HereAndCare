@@ -4,47 +4,178 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Volunteer Registration - Here and Care</title>
-    <link rel="stylesheet" href="volunteer.css">
-    <script>
-        function closeTab() {
-            alert("Form submitted successfully! Thank You for Your Contribution");
-            window.close();
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background:#f4f4f4;
         }
+
+        .container{
+            width: 500px;
+            margin: 30px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        h1{
+            text-align:center;
+        }
+
+        .form-group{
+            margin-bottom:15px;
+        }
+
+        label{
+            display:block;
+            margin-bottom:5px;
+        }
+
+        input, textarea{
+            width:100%;
+            padding:10px;
+            border:1px solid #ccc;
+            border-radius:5px;
+        }
+
+        button{
+            width:100%;
+            padding:10px;
+            background:green;
+            color:white;
+            border:none;
+            border-radius:5px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:darkgreen;
+        }
+
+        .error{
+            color:red;
+            font-size:14px;
+        }
+    </style>
+
+    <script>
+
+        function validateForm() {
+
+            // Full Name Validation
+            let name = document.getElementById("name").value;
+            let namePattern = /^[A-Za-z ]{3,15}$/;
+
+            if(!namePattern.test(name)){
+                alert("Full Name should contain only alphabets and spaces (3-15 characters).");
+                return false;
+            }
+
+            // Email Validation
+            let email = document.getElementById("email").value;
+            let emailPattern = /^[A-Za-z0-9]{5,20}@gmail\.com$/;
+
+            if(!emailPattern.test(email)){
+                alert("Email must be in proper gmail format and contain only @ and . symbols.");
+                return false;
+            }
+
+            // Phone Validation
+            let phone = document.getElementById("phone").value;
+            let phonePattern = /^[0-9]{10}$/;
+
+            if(!phonePattern.test(phone)){
+                alert("Phone number must contain exactly 10 digits.");
+                return false;
+            }
+
+            // Address Validation
+            let address = document.getElementById("address").value;
+            let addressPattern = /^[A-Za-z0-9/ ]+$/;
+
+            if(!addressPattern.test(address)){
+                alert("Address can contain only alphabets, numbers, spaces and / symbol.");
+                return false;
+            }
+
+            // Availability Validation
+            let availability = document.getElementById("availability").value;
+            let availabilityPattern = /^[A-Za-z ]+$/;
+
+            if(!availabilityPattern.test(availability)){
+                alert("Availability should contain only alphabets.");
+                return false;
+            }
+
+            // Skills Validation
+            let skills = document.getElementById("skills").value;
+            let skillsPattern = /^[A-Za-z ]+$/;
+
+            if(!skillsPattern.test(skills)){
+                alert("Skills and Interests should contain only alphabets.");
+                return false;
+            }
+
+            alert("Form submitted successfully! Thank You for Your Contribution");
+
+            return true;
+        }
+
     </script>
+
 </head>
+
 <body>
+
     <div class="container">
+
         <h1>Join Us as a Volunteer</h1>
-        <p>We appreciate your interest in joining Here and Care. Please fill out the form below to become a part of our volunteer team.</p>
-       <form onsubmit="closeTab(); return false;">
+
+        <p>
+            We appreciate your interest in joining Here and Care.
+            Please fill out the form below to become a part of our volunteer team.
+        </p>
+
+        <form onsubmit="return validateForm()">
+
             <div class="form-group">
-                <label for="name">Full Name</label>
-                <input type="text" id="name" name="name" placeholder="Your Full Name" required>
+                <label>Full Name</label>
+                <input type="text" id="name" placeholder="Your Full Name" required>
             </div>
+
             <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" placeholder="Your Email Address" required>
+                <label>Email Address</label>
+                <input type="text" id="email" placeholder="example@gmail.com" required>
             </div>
+
             <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" required>
+                <label>Phone Number</label>
+                <input type="text" id="phone" placeholder="10 Digit Number" required>
             </div>
+
             <div class="form-group">
-                <label for="address">Address</label>
-                <input type="text" id="address" name="address" placeholder="Your Address" required>
+                <label>Address</label>
+                <input type="text" id="address" placeholder="Your Address" required>
             </div>
+
             <div class="form-group">
-                <label for="availability">Availability</label>
-                <input type="text" id="availability" name="availability" placeholder="Days and Times You Are Available" required>
+                <label>Availability</label>
+                <input type="text" id="availability" placeholder="Available Days" required>
             </div>
+
             <div class="form-group">
-                <label for="skills">Skills and Interests</label>
-                <textarea id="skills" name="skills" placeholder="Describe your skills and interests" rows="4"></textarea>
+                <label>Skills and Interests</label>
+                <textarea id="skills" rows="4" placeholder="Your Skills"></textarea>
             </div>
+
             <div class="form-group">
                 <button type="submit">Submit Registration</button>
             </div>
+
         </form>
+
     </div>
+
 </body>
 </html>
