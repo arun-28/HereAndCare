@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Volunteer Registration - Here and Care</title>
 
     <style>
-        body {
+        body{
             font-family: Arial, sans-serif;
-            background: #f4f4f4;
+            background:#f4f4f4;
         }
 
-        .container {
+        .container{
             width: 500px;
             margin: 30px auto;
             background: white;
@@ -20,40 +19,43 @@
             border-radius: 10px;
         }
 
-        h1 {
-            text-align: center;
+        h1{
+            text-align:center;
         }
 
-        .form-group {
-            margin-bottom: 15px;
+        .form-group{
+            margin-bottom:15px;
         }
 
-        label {
-            display: block;
-            margin-bottom: 5px;
+        label{
+            display:block;
+            margin-bottom:5px;
         }
 
-        input,
-        textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+        input, textarea{
+            width:100%;
+            padding:10px;
+            border:1px solid #ccc;
+            border-radius:5px;
         }
 
-        button {
-            width: 100%;
-            padding: 10px;
-            background: green;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
+        button{
+            width:100%;
+            padding:10px;
+            background:green;
+            color:white;
+            border:none;
+            border-radius:5px;
+            cursor:pointer;
         }
 
-        button:hover {
-            background: darkgreen;
+        button:hover{
+            background:darkgreen;
+        }
+
+        .error{
+            color:red;
+            font-size:14px;
         }
     </style>
 
@@ -61,30 +63,57 @@
 
         function validateForm() {
 
+            // Full Name Validation
             let name = document.getElementById("name").value;
-            let email = document.getElementById("email").value;
-            let phone = document.getElementById("phone").value;
+            let namePattern = /^[A-Za-z ]{3,15}$/;
 
-            // Full Name Length Check
-            if (name.length < 3 || name.length > 15) {
-                alert("Full Name must be between 3 and 15 characters.");
-                document.getElementById("name").focus();
+            if(!namePattern.test(name)){
+                alert("Full Name should contain only alphabets and spaces (3-15 characters).");
                 return false;
             }
 
             // Email Validation
+            let email = document.getElementById("email").value;
             let emailPattern = /^[A-Za-z0-9]{5,20}@gmail\.com$/;
 
-            if (!emailPattern.test(email)) {
-                alert("Enter valid Gmail address.");
-                document.getElementById("email").focus();
+            if(!emailPattern.test(email)){
+                alert("Email must be in proper gmail format and contain only @ and . symbols.");
                 return false;
             }
 
             // Phone Validation
-            if (phone.length != 10) {
+            let phone = document.getElementById("phone").value;
+            let phonePattern = /^[0-9]{10}$/;
+
+            if(!phonePattern.test(phone)){
                 alert("Phone number must contain exactly 10 digits.");
-                document.getElementById("phone").focus();
+                return false;
+            }
+
+            // Address Validation
+            let address = document.getElementById("address").value;
+            let addressPattern = /^[A-Za-z0-9/ ]+$/;
+
+            if(!addressPattern.test(address)){
+                alert("Address can contain only alphabets, numbers, spaces and / symbol.");
+                return false;
+            }
+
+            // Availability Validation
+            let availability = document.getElementById("availability").value;
+            let availabilityPattern = /^[A-Za-z ]+$/;
+
+            if(!availabilityPattern.test(availability)){
+                alert("Availability should contain only alphabets.");
+                return false;
+            }
+
+            // Skills Validation
+            let skills = document.getElementById("skills").value;
+            let skillsPattern = /^[A-Za-z ]+$/;
+
+            if(!skillsPattern.test(skills)){
+                alert("Skills and Interests should contain only alphabets.");
                 return false;
             }
 
@@ -110,95 +139,36 @@
 
         <form onsubmit="return validateForm()">
 
-            <!-- Full Name -->
             <div class="form-group">
-                <label for="name">Full Name</label>
-
-                <input type="text"
-                    id="name"
-                    name="name"
-                    placeholder="Your Full Name"
-                    maxlength="15"
-                    minlength="3"
-
-                    oninput="this.value=this.value.replace(/[^A-Za-z ]/g,'')"
-
-                    required>
+                <label>Full Name</label>
+                <input type="text" id="name" placeholder="Your Full Name" required>
             </div>
 
-            <!-- Email -->
             <div class="form-group">
-                <label for="email">Email Address</label>
-
-                <input type="text"
-                    id="email"
-                    name="email"
-                    placeholder="example@gmail.com"
-
-                    pattern="[A-Za-z0-9]{5,20}@gmail\.com"
-
-                    required>
+                <label>Email Address</label>
+                <input type="text" id="email" placeholder="example@gmail.com" required>
             </div>
 
-            <!-- Phone -->
             <div class="form-group">
-                <label for="phone">Phone Number</label>
-
-                <input type="text"
-                    id="phone"
-                    name="phone"
-                    placeholder="10 Digit Number"
-                    maxlength="10"
-
-                    oninput="this.value=this.value.replace(/[^0-9]/g,'')"
-
-                    required>
+                <label>Phone Number</label>
+                <input type="text" id="phone" placeholder="10 Digit Number" required>
             </div>
 
-            <!-- Address -->
             <div class="form-group">
-                <label for="address">Address</label>
-
-                <input type="text"
-                    id="address"
-                    name="address"
-                    placeholder="Your Address"
-
-                    oninput="this.value=this.value.replace(/[^A-Za-z0-9\/ ]/g,'')"
-
-                    required>
+                <label>Address</label>
+                <input type="text" id="address" placeholder="Your Address" required>
             </div>
 
-            <!-- Availability -->
             <div class="form-group">
-                <label for="availability">Availability</label>
-
-                <input type="text"
-                    id="availability"
-                    name="availability"
-                    placeholder="Available Days"
-
-                    oninput="this.value=this.value.replace(/[^A-Za-z ]/g,'')"
-
-                    required>
+                <label>Availability</label>
+                <input type="text" id="availability" placeholder="Available Days" required>
             </div>
 
-            <!-- Skills -->
             <div class="form-group">
-                <label for="skills">Skills and Interests</label>
-
-                <textarea
-                    id="skills"
-                    name="skills"
-                    rows="4"
-                    placeholder="Your Skills"
-
-                    oninput="this.value=this.value.replace(/[^A-Za-z ]/g,'')"
-
-                    required></textarea>
+                <label>Skills and Interests</label>
+                <textarea id="skills" rows="4" placeholder="Your Skills"></textarea>
             </div>
 
-            <!-- Button -->
             <div class="form-group">
                 <button type="submit">Submit Registration</button>
             </div>
@@ -208,5 +178,4 @@
     </div>
 
 </body>
-
 </html>
