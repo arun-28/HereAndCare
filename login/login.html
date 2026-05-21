@@ -3,50 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>signup</title>
+    <title>Login</title>
+
     <link rel="stylesheet" href="login.css">
+
+    <style>
+
+        .forgot-password{
+            text-align: right;
+            margin-top: -10px;
+            margin-bottom: 15px;
+        }
+
+        .forgot-password a{
+            text-decoration: none;
+            color: blue;
+            font-size: 14px;
+        }
+
+        .forgot-password a:hover{
+            text-decoration: underline;
+        }
+
+    </style>
+
+    <script>
+
+        function forgotPassword(){
+
+            let email = prompt("Enter your registered Gmail:");
+
+            let emailPattern = /^[A-Za-z0-9]{5,20}@gmail\.com$/;
+
+            if(email == ""){
+                alert("Email cannot be empty");
+            }
+
+            else if(emailPattern.test(email)){
+
+                alert("Password reset link sent to " + email);
+
+            }
+
+            else{
+
+                alert("Enter valid Gmail address");
+
+            }
+
+        }
+
+    </script>
+
 </head>
+
 <body>
+
     <div class="outer-box">
-        
+
         <div class="inner-box">
-            <header class="signup-header"> 
+
+            <header class="signup-header">
+
                 <h1>Log in</h1>
 
-           
-         </header>
+            </header>
+
             <main class="signup-body">
-                <form action="#"></form>
-               
+
+                <form action="#">
+
+                    <!-- Email -->
+
+                    <p>
+
+                        <label for="email">Email</label>
+
+                        <input type="email"
+                               id="email"
+                               placeholder="xyz@gmail.com"
+                               required>
+
+                    </p>
+
+                    <!-- Password -->
+
+                    <p>
+
+                        <label for="password">Password</label>
+
+                        <input type="password"
+                               id="password"
+                               placeholder="At least 8 characters"
+                               minlength="8"
+                               required>
+
+                    </p>
+
+                    <!-- Forgot Password -->
+
+                    <div class="forgot-password">
+
+                        <a href="#" onclick="forgotPassword()">
+                            Forgot Password?
+                        </a>
+
+                    </div>
+
+                    <!-- Submit Button -->
+
+                    <p>
+
+                        <input type="submit"
+                               id="submit"
+                               value="Log in">
+
+                    </p>
+
+                </form>
+
+            </main>
+
+            <footer class="signup-footer">
+
                 <p>
-                    <label for="email">Email</label>
-                    <input type="email" name="" id="email" placeholder="xyz@gmail.com" required>
-                     
-                 </p>
-                 <p>
-                    <label for="passowrd">Passowrd</label>
-                    <input type="password" name="" id="password" placeholder="at least 8 character" required>
-                     
-                 </p>
-                 <p>
-                   
-                    <input type="submit" name="" id="submit" value="Log in">
-                     
-                 </p>
+                    Don't have an account?
+                    <a href="signup.html">Register Here</a>
+                </p>
 
-
-                </main> 
-                <footer class="signup-footer">
-                    <p>Don't have an account? <a href="signup.html">Register Here</a></p>
-
-                </footer>
-
-                
-                
+            </footer>
 
         </div>
-        <div class="circle  c1"></div>
+
+        <div class="circle c1"></div>
         <div class="circle c2"></div>
+
     </div>
+
 </body>
 </html>
